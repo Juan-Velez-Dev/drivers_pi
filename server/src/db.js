@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+
 const { Sequelize } = require('sequelize');
 
 const fs = require("fs");
@@ -36,8 +37,10 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-
+// Drivers(sequelize);
+// Teams(sequelize)
 const { Drivers, Teams } = sequelize.models;
+
 
 Drivers.belongsToMany(Teams, { through: 'drivers_teams' });
 Teams.belongsToMany(Drivers, { through: 'drivers_teams' });

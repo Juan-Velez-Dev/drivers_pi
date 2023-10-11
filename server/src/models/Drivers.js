@@ -2,6 +2,10 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 
+
+  //! terminar de hacer validaciones
+
+
   sequelize.define('drivers', {
     id: {
       type: DataTypes.UUID,

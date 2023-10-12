@@ -3,11 +3,11 @@ const { Drivers, Teams } = require('../../db');
 //* Controllers
 
 const createDrivers = async (data) => {
-  // string enviado en arr y se mapea
-  // por cada elemento se busca en DB => 
+  const teams = await Teams.findAll({ where: { id: data.teams } });
   const newDriver = await Drivers.create(data);
+  newDriver.addTeams(teams)
   if (newDriver) return newDriver;
-  return;
+  return null;
 };
 
 module.exports = createDrivers;

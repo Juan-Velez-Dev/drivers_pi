@@ -6,7 +6,7 @@ const getTeamsHandler = async (req, res) => {
     if (!response) throw new Error('Teams Not Found!');
     return res.status(200).json(response);
   } catch (error) {
-    return res.status(500).send(error.message);
+    return res.status(500).send('Cant get teams!');
   }
 };
 

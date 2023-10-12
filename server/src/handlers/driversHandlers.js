@@ -11,7 +11,7 @@ const getDriversHanlder = async (req, res) => {
     if (!response) throw new Error('Drivers Not Found!');
     if (response) return res.status(200).json(response);
   } catch (error) {
-    return res.status(500).send('Internal server error!');
+    return res.status(500).send('Cant get drivers!');
   };
 };
 
@@ -24,7 +24,7 @@ const getDriversByIdHanlder = async (req, res) => {
     if (!driver) throw new Error('Driver Not Found!');
     if (driver) return res.status(200).json(driver);
   } catch (error) {
-    return res.status(500).send('Internal server error!')
+    return res.status(500).send('Cant get drivers by id!')
   };
 };
 
@@ -37,7 +37,7 @@ const getDriversByNameHandler = async (req, res) => {
     if (!driver) throw new Error('Driver Not found');
     if (driver) return res.status(200).json(driver[0]);
   } catch (error) {
-    return res.status(500).send('Internal server error!');
+    return res.status(500).send('Cant get drivers by name!');
   };
 };
 
@@ -50,7 +50,7 @@ const createDriverHandler = async (req, res) => {
     if (!newDriver) throw new Error('driver Could Not Be Breated!');
     if (newDriver) return res.status(200).send(newDriver);
   } catch (error) {
-    return res.status(500).send('Internal server error!');
+    return res.status(500).send('Cant create drivers!');
   };
 };
 

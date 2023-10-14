@@ -1,4 +1,77 @@
-.nav {
+.landing-container {
+  display: flex;
+  margin: 200px auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-f1 {
+  width: 450px;
+}
+
+/* CSS */
+.button-29 {
+  align-items: center;
+  appearance: none;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(121, 9, 9, 1) 58%,
+    rgba(255, 0, 116, 1) 100%
+  );
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(15, 14, 19, 0.4) 0 2px 4px,
+    rgba(15, 14, 19, 0.4) 0 7px 13px -3px, rgba(7, 8, 10, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+}
+
+.button-29:focus {
+  box-shadow: #11131c 0 0 0 1.5px inset, rgba(415, 14, 19, 0.4) 0 2px 4px,
+    rgba(15, 14, 19, 0.43) 0 7px 13px -3px, #11131c 0 -3px 0 inset;
+}
+
+.button-29:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #11131c 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-29:active {
+  box-shadow: #11131c 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.button-29 {
+  margin-top: 30px;
+  padding: 9px;
+  padding-left: 50px;
+  padding-right: 50px;
   color: white;
-  font-size: 2.5rem;
+  font-size: 1.6rem;
+  text-decoration: none;
+  border-radius: 10px;
 }

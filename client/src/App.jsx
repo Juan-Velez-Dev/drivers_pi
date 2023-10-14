@@ -1,7 +1,5 @@
 //* HOOKS
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { useLocation, useNavigate, Routes, Route } from 'react-router-dom'
+import { useLocation, Routes, Route } from 'react-router-dom'
 //* COMPONENTS
 import Landing from './components/landing/Landing.'
 import Home from './components/home/Home'
@@ -10,7 +8,6 @@ import './App.css'
 
 function App () {
   //* HOOKS INVOCATION
-  const navigate = useNavigate()
   const location = useLocation()
   return (
     <div className='app-container'>

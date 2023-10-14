@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
+import './search.css'
 
 function Search () {
   const [name, setName] = useState('')
@@ -9,7 +10,6 @@ function Search () {
     const { data } = await axios(`/driver/?name=${name.toLocaleLowerCase()}`)
     SetDrivers(data)
   }
-  // console.log(drivers)
 
   const handleChange = (event) => {
     const { value } = event.target
@@ -17,15 +17,16 @@ function Search () {
   }
 
   return (
-    <div>
-      <h1>Search components</h1>
+    <div className='search-container'>
       <input
       type='text'
       name='search'
+      className='search-input'
       value={name}
+      placeholder='driver name'
       onChange={handleChange}
       />
-      <button onClick={onSearch}>Search</button>
+      <button onClick={onSearch} className='button-30'>Search</button>
     </div>
   )
 }

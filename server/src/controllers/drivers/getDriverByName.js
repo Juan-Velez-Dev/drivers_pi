@@ -5,7 +5,7 @@ const getDriversByName = async (name) => {
   const { data } = await axios(`http://localhost:5000/drivers`);
   const filter = await data.filter(driver => driver.name.forename.toLowerCase().includes(name));
   if (filter.length) {
-    const drivers = filter.slice(0, 15);
+    const drivers = filter;
     return drivers;
   };
   const filterDb = await Drivers.findAll({ where: { 'name': name } });

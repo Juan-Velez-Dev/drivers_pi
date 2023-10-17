@@ -1,7 +1,10 @@
 .app-container {
   height: 100%;
+  width: 100%;
   box-sizing: border-box;
   width: 94%;
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
 }
 

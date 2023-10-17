@@ -2,8 +2,8 @@ const { Drivers, Teams } = require('../../db');
 const axios = require('axios')
 
 const getDriversByName = async (name) => {
-  const { data } = await axios(`http://localhost:5000/drivers`);
-  const filter = await data.filter(driver => driver.name.forename.toLowerCase().includes(name));
+  const { data } = await axios(' http://localhost:5000/drivers')
+  const filter = await data.filter(driver => driver.name.surname.toLowerCase().includes(name));
   if (filter.length) {
     const drivers = filter;
     return drivers;

@@ -1,12 +1,19 @@
+import { NavLink } from 'react-router-dom';
+
+import './card.css';
+
 function Card ({ driver }) {
-  // image name teams
+  const { id, name, image, teams } = driver;
+
   return (
-    <div>
-      <h1>{driver.name.forename}</h1>
-      <img src={driver.image} alt={driver.name.forename} />
-      <p>{driver.teams}</p>
+    <div className="card-container">
+      <h1>{name.forename}</h1>
+      <NavLink to={`/detail/${id}`}>
+        <img className='card-img' src={image.url} alt={name.surname} />
+      </NavLink>
+      <p>{teams}</p>
     </div>
-  )
+  );
 }
 
-export default Card
+export default Card;

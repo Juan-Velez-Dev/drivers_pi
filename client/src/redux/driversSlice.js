@@ -1,21 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit'
-
-const initialState = []
-
+import { createSlice } from '@reduxjs/toolkit';
+let initialState = {
+  drivers: [],
+  allDrivers: []
+};
 export const driversSlice = createSlice({
   name: 'drivers',
   initialState,
   reducers: {
-    getDrivers: (state = initialState, action) => {
-      state = [...action.payload]
-      return state
+    getAllDrivers: (state, action) => {
+      state.allDrivers = action.payload;
     },
     getDriversByName: (state, action) => {
-      state = [...action.payload]
-      return state
+      state.drivers = action.payload;
+    },
+    getDriversById: (state, action) => {
+      state.drivers = action.payload;
+    },
+    createDriver: (state, action) => {
+      state.allDrivers = [...state, action.payload];
     }
   }
-})
+});
 
-export const { getDrivers } = driversSlice.actions
-export default driversSlice.reducer
+export const { getAllDrivers, getDriversByName } = driversSlice.actions;
+export default driversSlice.reducer;

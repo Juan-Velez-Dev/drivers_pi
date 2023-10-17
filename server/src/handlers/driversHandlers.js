@@ -35,7 +35,7 @@ const getDriversByNameHandler = async (req, res) => {
     const name = req.query.name.toLowerCase();
     const driver = await getDriverByName(name);
     if (!driver) throw new Error('Driver Not found');
-    if (driver) return res.status(200).json(driver[0]);
+    if (driver) return res.status(200).json(driver);
   } catch (error) {
     return res.status(500).send('Cant get drivers by name!');
   };

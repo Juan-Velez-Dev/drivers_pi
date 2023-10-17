@@ -1,16 +1,22 @@
-import Card from '../card/Card'
-import { useSelector } from 'react-redux/es/hooks/useSelector'
-import Pagination from '../pagination/Pagination'
-
+import './cards.css';
+import Card from '../card/Card';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 function Cards () {
-  const drivers = useSelector(state => state.drivers).slice(0, 4) // slice pare ver 4 por el momento
+  const [data, setData] = useState([]);
+  const { drivers } = useSelector(state => state.drivers);
+  const { allDrivers } = useSelector(state => state.drivers);
+
+  useEffect(() => {
+    const tempData = drivers.length ? drivers : allDrivers;
+    setData(tempData);
+  }, [drivers, data, allDrivers]);
+
   return (
-    <div>
-      <h1>Cards</h1>
-      {drivers.map((driver, i) => <Card driver={driver} key={i}/>)}
-      <Pagination/>
+    <div className='cards-container'>
+      { data.map(driver => <Card driver={driver} key={driver.id}/>) }
     </div>
-  )
+  );
 }
 
-export default Cards
+export default Cards;

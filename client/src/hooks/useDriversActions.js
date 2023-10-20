@@ -1,6 +1,6 @@
 import { useAppDispatch } from './store';
 import axios from 'axios';
-import { getAllDrivers, getDriversByName } from '../redux/driversSlice';
+import { getAllDrivers, filterByName, removeFilters, createDrivers, filterInOrder, filterByTeam } from '../redux/driversSlice';
 
 export const useDriversActions = () => {
   const dispatch = useAppDispatch();
@@ -9,10 +9,29 @@ export const useDriversActions = () => {
     dispatch(getAllDrivers(data));
   };
   const getByName = async (name) => {
-    const { data } = await axios(`/driver/?name=${name.toLocaleLowerCase()}`);
-    if (data) dispatch(getDriversByName(data));
+    dispatch(filterByName(name));
   };
-  const removeDriver = async (id) => { }; // en construcción
+  const getByOrder = (value) => {
+    dispatch(filterInOrder(value));
+  };
+  const getByTeams = (value) => {
+    dispatch(filterByTeam(value));
+  };
+  const resetFilters = async () => {
+    dispatch(removeFilters());
+  }; // en construcción
+  const createDriver = async (data) => {
+    const response = await axios.post('/driver', data);
+    if (!response) return alert('not');
+    else dispatch(createDrivers(response));
+  };
 
-  return { removeDriver, getDrivers, getByName };
+  return {
+    resetFilters,
+    getDrivers,
+    getByName,
+    createDriver,
+    getByOrder,
+    getByTeams
+  };
 };

@@ -1,6 +1,5 @@
 //* Components
 import Cards from '../cards/Cards';
-
 import './home.css';
 
 function Home () {

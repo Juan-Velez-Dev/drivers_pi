@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 let initialState = {
-  drivers: [],
-  allDrivers: []
+  driverData: [],
+  allDrivers: [],
+  filterDrivers: [],
+  filterDriverTeams: []
 };
 export const driversSlice = createSlice({
   name: 'drivers',
@@ -9,18 +12,47 @@ export const driversSlice = createSlice({
   reducers: {
     getAllDrivers: (state, action) => {
       state.allDrivers = action.payload;
-    },
-    getDriversByName: (state, action) => {
-      state.drivers = action.payload;
+      state.filterDrivers = action.payload;
     },
     getDriversById: (state, action) => {
-      state.drivers = action.payload;
+      state.driverData = action.payload;
     },
-    createDriver: (state, action) => {
-      state.allDrivers = [...state, action.payload];
+    createDrivers: (state, action) => {
+      const { data } = action.payload;
+      state.allDrivers = [...action.payload, data];
+    },
+    filterByName: (state, action) => {
+      const filter = state.allDrivers
+        .filter(driver => driver.name.surname.toLowerCase()
+          .includes(action.payload.toLowerCase()));
+      if (!filter.length) alert('drivers not found');
+      else state.filterDrivers = filter;
+    },
+    filterInOrder: (state, action) => {
+      if (action.payload === 'A') {
+        state.filterDrivers = state.filterDrivers.sort((a, b) => a.id - b.id);
+      } else if (action.payload === 'B') {
+        state.filterDrivers = state.filterDrivers.sort((a, b) => b.id - a.id);
+      }
+    },
+    filterByTeam: (state, action) => {
+      const filter = state.filterDrivers.filter(driver => driver.hasOwnProperty('teams'));
+      state.filterDriverTeams = filter.filter(driver => driver.teams.split(', ').includes(action.payload));
+    },
+    removeFilters: (state, action) => {
+      state.filterDrivers = state.allDrivers;
+      state.filterDriverTeams = [];
     }
   }
 });
 
-export const { getAllDrivers, getDriversByName } = driversSlice.actions;
+export const {
+  getAllDrivers,
+  filterByName,
+  createDrivers,
+  filterInOrder,
+  filterByTeam,
+  removeFilters
+} = driversSlice.actions;
+
 export default driversSlice.reducer;

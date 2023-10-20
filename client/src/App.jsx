@@ -7,15 +7,18 @@ import Home from './components/home/Home';
 import Nav from './components/nav/Nav';
 import './App.css';
 import { useEffect } from 'react';
+import { useTeamsActions } from './hooks/useTeamsActions';
 import { useDriversActions } from './hooks/useDriversActions';
 import Create from './components/create/Create';
 
 function App () {
   //* HOOKS INVOCATION
   const location = useLocation();
+  const { getTeams } = useTeamsActions();
   const { getDrivers } = useDriversActions();
   useEffect(() => {
     getDrivers();
+    getTeams();
   }, []);
 
   return (

@@ -46,11 +46,13 @@ const getDriversByNameHandler = async (req, res) => {
 const createDriverHandler = async (req, res) => {
   try {
     const data = { ...req.body };
+    console.log('createDriverHandler', data)
     const newDriver = await createDrivers(data);
+    console.log('newDriver:', newDriver);
     if (!newDriver) throw new Error('driver Could Not Be Breated!');
     if (newDriver) return res.status(200).send(newDriver);
   } catch (error) {
-    return res.status(500).send('Cant create drivers!');
+    return res.status(500).json(error.message); //'Cant create drivers!'
   };
 };
 

@@ -37,7 +37,9 @@ export const driversSlice = createSlice({
     },
     filterByTeam: (state, action) => {
       const filter = state.filterDrivers.filter(driver => driver.hasOwnProperty('teams'));
-      state.filterDriverTeams = filter.filter(driver => driver.teams.split(', ').includes(action.payload));
+      const response = filter.filter(driver => driver.teams.split(', ').includes(action.payload));
+      if (!response.length) alert('driver not found');
+      else state.filterDriverTeams = response;
     },
     removeFilters: (state, action) => {
       state.filterDrivers = state.allDrivers;

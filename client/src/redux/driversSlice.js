@@ -4,7 +4,9 @@ let initialState = {
   driverData: [],
   allDrivers: [],
   filterDrivers: [],
-  filterDriverTeams: []
+  filterDriverTeams: [],
+  driversPerPage: 9,
+  currentDrivers: []
 };
 export const driversSlice = createSlice({
   name: 'drivers',
@@ -19,7 +21,7 @@ export const driversSlice = createSlice({
     },
     createDrivers: (state, action) => {
       const { data } = action.payload;
-      state.allDrivers = [...action.payload, data];
+      state.allDrivers = [...state.allDrivers, data];
     },
     filterByName: (state, action) => {
       const filter = state.allDrivers
@@ -36,7 +38,7 @@ export const driversSlice = createSlice({
       }
     },
     filterByTeam: (state, action) => {
-      const filter = state.filterDrivers.filter(driver => driver.hasOwnProperty('teams'));
+      const filter = state.filterDrivers.filter(driver => driver.hasOwnProperty('teams')); // eslint-disable-line
       const response = filter.filter(driver => driver.teams.split(', ').includes(action.payload));
       if (!response.length) alert('driver not found');
       else state.filterDriverTeams = response;

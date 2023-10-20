@@ -12,11 +12,11 @@ module.exports = (sequelize) => {
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
-    name: {
+    surname: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    lastname: {
+    forename: {
       type: DataTypes.STRING,
       allowNull: false,
     },

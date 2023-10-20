@@ -6,8 +6,8 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 function Cards () {
   const [data, setData] = useState([]);
-  const { filterDrivers } = useSelector(state => state.drivers); // if filterDrivers.length > 0 ? filterDrivers.map(driver=> {Card props={props}}) : data.map(driver=> {Card props={props}}
-  const { filterDriverTeams } = useSelector(state => state.drivers); // if filterDrivers.length > 0 ? filterDrivers.map(driver=> {Card props={props}}) : data.map(driver=> {Card props={props}}
+  const { filterDrivers } = useSelector(state => state.drivers);
+  const { filterDriverTeams } = useSelector(state => state.drivers);
   useEffect(() => {
     if (filterDriverTeams.length) setData(filterDriverTeams);
     else if (filterDrivers.length) setData(filterDrivers);

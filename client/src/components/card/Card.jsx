@@ -7,7 +7,7 @@ function Card ({ driver }) {
 
   return (
     <div className="card-container">
-      <h1>{name.forename}</h1>
+      <h1>{name.surname}</h1>
       <NavLink to={`/detail/${id}`}>
         <img className='card-img' src={image.url} alt={name.surname} />
       </NavLink>

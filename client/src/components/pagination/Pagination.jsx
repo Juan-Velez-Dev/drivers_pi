@@ -1,23 +1,30 @@
 import { useEffect, useState } from 'react';
-import Cards from '../cards/Cards';
+import { useDriversActions } from '../../hooks/useDriversActions';
 import { useSelector } from 'react-redux';
 
-function Pagination () {
-  const { filterDrivers } = useSelector(state => state.drivers);
+export const Pagination = ({ data }) => {
+  const { prevHandler, nextHandler, specificPage } = useDriversActions();
+  const [buttonDisabel, setButtonDisabel] = useState(false);
+  const { currentPage } = useSelector(state => state.drivers);
+  const { driversPerPage } = useSelector(state => state.drivers);
+  const totalDrivers = data.length;
+  const pageNumbers = [];
 
-  // const [currentPage, setCurrentPage] = useState(0);
-  // const [drivers, setDrivers] = useState([]);
-
-  // if (filterDrivers.length) {
-  //   const firstIndex = currentPage * driversPerPage;
-  //   setDrivers([...filterDrivers].slice(firstIndex, firstIndex + driversPerPage));
-  // }
+  for (let i = 1; i <= Math.ceil(totalDrivers / driversPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   return (
     <div>
-
+      <div>
+        <button disabled={buttonDisabel} className={`btn ${currentPage === 1 ? 'is-disable' : ''}`} onClick={prevHandler}>Prev</button>
+        <div>
+          {pageNumbers?.map(noPage => (
+            <button className={noPage === currentPage ? 'isCurrent' : ''} key={noPage} onClick={() => specificPage(noPage)}> {noPage}</button>
+          ))}
+        </div>
+        <button className={`btn ${currentPage >= pageNumbers.length ? 'is-disable' : ''}`} onClick={nextHandler}>Next</button>
+      </div>
     </div>
   );
-}
-
-export default Pagination;
+};

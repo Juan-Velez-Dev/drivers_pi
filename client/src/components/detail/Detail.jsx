@@ -1,23 +1,24 @@
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
+
 import { useEffect, useState } from 'react';
-import imgDefault from '../../assets/defimg.jpg';
+
 import axios from 'axios';
 
 function Detail () {
   const { id } = useParams();
-  const [driver, setDriver] = useState(null);
+  const [driver, setDriver] = useState();
   useEffect(() => {
-    axios(`/drivers/${Number(id)}`)
-      .then(data => setDriver(data.data));
-  }, [id]);
-  console.log(driver);
+    axios(`/driver/${Number(id)}`)
+      .then(data => setDriver(data.data))
+      .catch(alert('not found'));
+  }, []);
   return (
     <div>
-      <h1>Detail</h1>
+
       <h2>{driver?.name.forename}</h2>
       <p>{driver?.name.surname}</p>
       <p>{driver?.nationality}</p>
-      <img src={driver?.image.url.length ? driver.image.url : imgDefault} alt={driver?.name.forename} />
+      <img src={driver?.image.url} alt={driver?.name.forename} />
       <p>{driver?.description}</p>
       <p>{driver?.dob}</p>
       <p>{driver?.teams}</p>

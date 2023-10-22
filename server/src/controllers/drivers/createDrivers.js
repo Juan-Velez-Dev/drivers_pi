@@ -1,7 +1,5 @@
 const { Drivers, Teams } = require('../../db');
 
-//* Controllers
-
 const createDrivers = async (data) => {
   const teams = await Teams.findAll({ where: { name: data.teams } });
   const newDriver = await Drivers.create(data);

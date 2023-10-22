@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-
 import './card.css';
 
 function Card ({ driver }) {

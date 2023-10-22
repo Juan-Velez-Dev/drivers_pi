@@ -3,7 +3,7 @@ const getDrivers = require('../controllers/drivers/getDrivers');
 const getDriversById = require('../controllers/drivers/getDriverById')
 const getDriverByName = require('../controllers/drivers/getDriverByName')
 
-//* GET
+//* GET ALL
 
 const getDriversHanlder = async (req, res) => {
   try {
@@ -15,7 +15,7 @@ const getDriversHanlder = async (req, res) => {
   };
 };
 
-//* BY ID
+//* GET BY ID
 
 const getDriversByIdHanlder = async (req, res) => {
   try {
@@ -28,7 +28,7 @@ const getDriversByIdHanlder = async (req, res) => {
   };
 };
 
-//* BY NAME
+//* GET BY NAME
 
 const getDriversByNameHandler = async (req, res) => {
   try {
@@ -41,7 +41,7 @@ const getDriversByNameHandler = async (req, res) => {
   };
 };
 
-//* CREATE
+//* POST
 
 const createDriverHandler = async (req, res) => {
   try {
@@ -52,7 +52,7 @@ const createDriverHandler = async (req, res) => {
     if (!newDriver) throw new Error('driver Could Not Be Breated!');
     if (newDriver) return res.status(200).send(newDriver);
   } catch (error) {
-    return res.status(500).json(error.message); //'Cant create drivers!'
+    return res.status(500).send('Cant create drivers!');
   };
 };
 

@@ -1,11 +1,6 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-
-
-  //! terminar de hacer validaciones
-
-
   sequelize.define('drivers', {
     id: {
       type: DataTypes.UUID,
@@ -15,14 +10,17 @@ module.exports = (sequelize) => {
     surname: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     forename: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     description: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     image: {
       type: DataTypes.STRING,
@@ -30,6 +28,7 @@ module.exports = (sequelize) => {
       validate: {
         isUrl: true,
       },
+      unique: true,
     },
     nationality: {
       type: DataTypes.STRING,

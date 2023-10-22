@@ -1,6 +1,6 @@
 import { useAppDispatch } from './store';
 import axios from 'axios';
-import { setPrevHandler, onSpecificPage, getAllDrivers, setNextHandler, filterByName, removeFilters, createDrivers, filterInOrder, filterByTeam } from '../redux/driversSlice';
+import { setPrevHandler, clearDetailComponent, getDriversById, onSpecificPage, getAllDrivers, setNextHandler, filterByName, removeFilters, createDrivers, filterInOrder, filterByTeam } from '../redux/driversSlice';
 
 export const useDriversActions = () => {
   const dispatch = useAppDispatch();
@@ -21,6 +21,19 @@ export const useDriversActions = () => {
   //* get drivers by name
   const getByName = async (name) => {
     dispatch(filterByName(name));
+  };
+  //* get drivers by id
+  // TODO: not implemented!!
+  const getByID = async (id) => {
+    const { data } = await axios(`/driver/${Number(id)}`);
+    console.log(id);
+    console.log(data);
+    if (!data) return alert('there are no drivers with that id');
+    else dispatch(getDriversById(data));
+  };
+  //* clear detail Component
+  const clearDetail = () => {
+    dispatch(clearDetailComponent());
   };
   //* get drivers by team
   const getByTeams = (value) => {
@@ -56,6 +69,8 @@ export const useDriversActions = () => {
     getByTeams,
     prevHandler,
     nextHandler,
-    specificPage
+    specificPage,
+    getByID,
+    clearDetail
   };
 };

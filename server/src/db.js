@@ -1,11 +1,7 @@
 require('dotenv').config();
-
-
 const { Sequelize } = require('sequelize');
-
 const fs = require("fs");
 const path = require("path");
-
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 //* crea una instancia de Sequelize para conectarse a la base de datos
@@ -16,7 +12,6 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
 });
 
 const basename = path.basename(__filename);
-
 const modelDefiners = [];
 
 fs.readdirSync(path.join(__dirname, "/models"))
@@ -37,10 +32,7 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-// Drivers(sequelize);
-// Teams(sequelize)
 const { Drivers, Teams } = sequelize.models;
-
 
 Drivers.belongsToMany(Teams, { through: 'drivers_teams' });
 Teams.belongsToMany(Drivers, { through: 'drivers_teams' });

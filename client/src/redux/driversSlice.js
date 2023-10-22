@@ -5,6 +5,7 @@ let initialState = {
   allDrivers: [],
   filterDrivers: [],
   filterDriverTeams: [],
+  driversCreated: [],
   driversPerPage: 9,
   currentPage: 1
 };
@@ -21,6 +22,7 @@ export const driversSlice = createSlice({
     createDrivers: (state, action) => {
       const { data } = action.payload;
       state.allDrivers = [...state.allDrivers, data];
+      state.driversCreated = [...state.driversCreated, data];
     },
 
     //* --------- FILTERS ---------- *//
@@ -32,6 +34,14 @@ export const driversSlice = createSlice({
           .includes(action.payload.toLowerCase()));
       if (!filter.length) alert('drivers not found');
       else state.filterDrivers = filter;
+    },
+    //* get drivers by id
+    getDriversById: (state, action) => {
+      state.driverData = action.payload;
+    },
+    //* clear { driverData }
+    clearDetailComponent: (state, action) => {
+      state.driverData = [];
     },
     //* get drivers by team
     filterByTeam: (state, action) => {
@@ -67,11 +77,6 @@ export const driversSlice = createSlice({
     onSpecificPage: (state, action) => {
       state.currentPage = action.payload;
     }
-    //! EN CONSTRUCCION
-    // getDriversById: (state, action) => {
-    //   state.driverData = action.payload;
-    // },
-
   }
 });
 
@@ -84,7 +89,9 @@ export const {
   removeFilters,
   setPrevHandler,
   setNextHandler,
-  onSpecificPage
+  onSpecificPage,
+  getDriversById,
+  clearDetailComponent
 } = driversSlice.actions;
 
 export default driversSlice.reducer;

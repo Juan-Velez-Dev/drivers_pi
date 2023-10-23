@@ -1,6 +1,6 @@
-import { useSelector } from 'react-redux';
-
 import { useDriversActions } from '../../hooks/useDriversActions';
+import { useSelector } from 'react-redux';
+import './filter.css';
 
 function Filter () {
   const { getByOrder, getByTeams, resetFilters } = useDriversActions();
@@ -17,18 +17,17 @@ function Filter () {
   };
 
   return (
-    <div>
-      <h1>filter</h1>
-      <select onChange={handleOrder} >
+    <div className='filter-container'>
+      <select className='select-order' onChange={handleOrder} >
         <option>Order</option>
         <option value="A">asc</option>
         <option value="B">des</option>
       </select>
-      <select onChange={handleFilter} >
+      <select className='select-teams' onChange={handleFilter} >
         <option>Teams</option>
         {teams.map((team, i) => <option key={i} value={team}>{team}</option>)}
       </select>
-      <button onClick={handleReset}>reset filter</button>
+      <button className='filter-button' onClick={handleReset}>reset filter</button>
     </div>
   );
 }

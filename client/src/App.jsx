@@ -1,18 +1,15 @@
-//* HOOKS
 import { useLocation, Routes, Route } from 'react-router-dom';
-//* COMPONENTS
+import { useDriversActions } from './hooks/useDriversActions';
+import { useTeamsActions } from './hooks/useTeamsActions';
+import { useEffect } from 'react';
 import Landing from './components/landing/Landing.';
+import Create from './components/create/Create';
 import Detail from './components/detail/Detail';
 import Home from './components/home/Home';
 import Nav from './components/nav/Nav';
 import './App.css';
-import { useEffect, useState } from 'react';
-import { useTeamsActions } from './hooks/useTeamsActions';
-import { useDriversActions } from './hooks/useDriversActions';
-import Create from './components/create/Create';
 
 function App () {
-  //* HOOKS INVOCATION
   const location = useLocation();
   const { getTeams } = useTeamsActions();
   const { getDrivers } = useDriversActions();

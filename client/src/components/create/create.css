@@ -1,0 +1,12 @@
+.create-container {
+  margin: 20px auto;
+  width: 900px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgba(114, 13, 13, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  align-items: center;
+}

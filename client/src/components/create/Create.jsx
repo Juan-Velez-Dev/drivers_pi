@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useDriversActions } from '../../hooks/useDriversActions';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import Validation from './validation';
+import './create.css';
 
 function Create () {
   const { allDrivers } = useSelector(state => state.drivers);
@@ -62,8 +63,8 @@ function Create () {
   };
 
   return (
-    <div>
-      <h1>Create Driver</h1>
+    <div className='create-container'>
+      <h2>Create your Driver</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="surname">Surname</label>
         <input

@@ -1,8 +1,13 @@
 .cards-container {
+  margin-top: 20px;
+}
+
+.cards-content {
   width: 90%;
-  margin: 0 auto;
+  margin: 20px auto;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
+  gap: 100px;
 }

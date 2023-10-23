@@ -2,16 +2,92 @@
   display: flex;
   padding: 15px;
   background-color: rgba(133, 0, 0, 0.8);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.search-input {
-  border: none;
-  background-color: transparent;
-  border-bottom: 2px solid rgb(255, 255, 255);
+.nav-logo {
+  width: 200px;
+}
+
+.logo-content {
+  align-items: center;
+  gap: 20px;
+  display: flex;
+}
+
+.nav-content {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.title-pi {
   color: white;
-  margin-right: 20px;
+  font-size: 2.5rem;
 }
 
-.search-input:focus {
-  border: none;
+.create {
+  text-decoration: none;
+}
+
+.create {
+  align-items: center;
+  appearance: none;
+  background: rgb(2, 0, 36);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(15, 14, 19, 0.4) 0 2px 4px,
+    rgba(15, 14, 19, 0.4) 0 7px 13px -3px, rgba(7, 8, 10, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 1.3rem;
+}
+
+.create:focus {
+  box-shadow: #11131c 0 0 0 1.5px inset, rgba(415, 14, 19, 0.4) 0 2px 4px,
+    rgba(15, 14, 19, 0.43) 0 7px 13px -3px, #11131c 0 -3px 0 inset;
+}
+
+.create:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #11131c 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.create:active {
+  box-shadow: #11131c 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.create {
+  padding: 9px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 10px;
 }

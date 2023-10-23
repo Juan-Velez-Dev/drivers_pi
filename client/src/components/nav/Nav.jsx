@@ -1,16 +1,21 @@
-import Search from '../search/Search';
-import About from '../about/About';
-import { NavLink } from 'react-router-dom';
-
-import './nav.css';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import logo from '../../assets/F1.png';
+import Search from '../search/Search';
+import './nav.css';
+
 function Nav () {
   const [access, setAccess] = useState(true);
   return (
     <div className='nav-container'>
-      <Search className='search'/>
-      {access && <NavLink to='/create' className='create'>Create Driver</NavLink>}
-      <About className='about'/>
+      <div className='logo-content'>
+        <img src={logo} className='nav-logo'/>
+        <h3 className='title-pi'>DRIVERS</h3>
+      </div>
+      <div className='nav-content'>
+        <Search className='search'/>
+        {access && <NavLink to='/create' className='create'>Create Driver</NavLink>}
+      </div>
     </div>
   );
 }

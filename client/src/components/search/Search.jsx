@@ -18,7 +18,6 @@ function Search () {
         placeholder='search driver by name!'
         onChange={handleChange}
       />
-      {/* <button onClick={getByName} className='button-30'>Search</button> */}
     </div>
   );
 }

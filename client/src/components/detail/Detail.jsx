@@ -1,8 +1,7 @@
-import { useParams, NavLink } from 'react-router-dom';
-
 import { useEffect, useState } from 'react';
-
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import './detail.css';
 
 function Detail () {
   const { id } = useParams();
@@ -10,18 +9,23 @@ function Detail () {
   useEffect(() => {
     axios(`/driver/${Number(id)}`)
       .then(data => setDriver(data.data))
-      .catch(alert('not found'));
+      .catch(error => alert(error.message));
   }, []);
   return (
-    <div>
-
-      <h2>{driver?.name.forename}</h2>
-      <p>{driver?.name.surname}</p>
-      <p>{driver?.nationality}</p>
-      <img src={driver?.image.url} alt={driver?.name.forename} />
-      <p>{driver?.description}</p>
-      <p>{driver?.dob}</p>
-      <p>{driver?.teams}</p>
+    <div className='detail-container'>
+      <div className='detail-content'>
+        <div className='detail-img-container'>
+          <img className='detail-img' src={driver?.image.url} alt={driver?.name.forename} />
+        </div>
+        <div className='detail-info-container'>
+          <p className='detail-surname'><span>Surname:</span> {driver?.name.surname}</p>
+          <p className='detail-forename'><span>Forename:</span> {driver?.name.forename}</p>
+          <p className='detail-nationality'><span>Nationality:</span> {driver?.nationality}</p>
+          <p className='detail-dob'><span>Birthday:</span> {driver?.dob}</p>
+          <p className='detail-teams'><span>Teams:</span> {driver?.teams}</p>
+        </div>
+      </div>
+      <p className='detail-description'>{driver?.description}</p>
     </div>
   );
 }

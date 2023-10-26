@@ -10,3 +10,40 @@
   border-radius: 10px;
   align-items: center;
 }
+
+.create-title {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.create-form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  gap: 5px;
+}
+
+.create-form input {
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid rgb(255, 255, 255);
+  color: white;
+  font-size: 1.2rem;
+}
+.create-form p {
+}
+
+.error-message {
+  color: #48d983;
+}
+
+.disable {
+  pointer-events: none;
+  background-color: gray;
+}
+
+.active {
+  pointer-events: all;
+}

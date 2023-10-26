@@ -22,10 +22,10 @@ function Cards () {
   return (
     <div className='cards-container'>
       <Filter/>
+      <Pagination data={data} setData={setData} />
       <div className='cards-content'>
         { data.map(driver => <Card driver={driver} key={driver.id}/>).slice(firstIndex, lastIndex) }
       </div>
-      <Pagination className='' data={data} setData={setData} />
     </div>
   );
 }

@@ -9,7 +9,7 @@ const getDriversByName = async (name) => {
   //* Buscamos en DB
   const filterDb = await Drivers.findAll({ where: { 'name': name } });
   if (filterDb.length) return filterDb.slice(0, 15)
-  return null;
+  else return null;
 };
 
 module.exports = getDriversByName;

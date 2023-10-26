@@ -21,7 +21,6 @@ export const driversSlice = createSlice({
     //* create drivers
     createDrivers: (state, action) => {
       const { data } = action.payload;
-      state.allDrivers = [...state.allDrivers, data];
       state.driversCreated = [...state.driversCreated, data];
     },
 
@@ -53,11 +52,12 @@ export const driversSlice = createSlice({
     //* order drivers
     filterInOrder: (state, action) => {
       if (action.payload === 'A') {
+        state.filterDrivers = state.filterDrivers.sort((a, b) => a.id - b.id);
         if (state.filterDriverTeams.length) state.filterDriverTeams = state.filterDriverTeams.sort((a, b) => a.id - b.id);
-        else state.filterDrivers = state.filterDrivers.sort((a, b) => a.id - b.id);
-      } else if (action.payload === 'B') {
+      }
+      if (action.payload === 'B') {
+        state.filterDrivers = state.filterDrivers.sort((a, b) => b.id - a.id);
         if (state.filterDriverTeams) state.filterDriverTeams = state.filterDriverTeams.sort((a, b) => b.id - a.id);
-        else state.filterDrivers = state.filterDrivers.sort((a, b) => b.id - a.id);
       }
     },
     //* rest all filters

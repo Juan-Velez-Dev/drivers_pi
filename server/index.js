@@ -5,7 +5,7 @@ const PORT = 3001;
 
 server.listen(PORT, async () => {
   try {
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ force: false });
     console.log(`server listen in port: ${PORT}`);
 
   } catch (error) {

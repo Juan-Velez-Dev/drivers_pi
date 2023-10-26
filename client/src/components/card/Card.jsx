@@ -1,19 +1,19 @@
 import { NavLink } from 'react-router-dom';
+import defimg from '../../assets/defimg.jpg';
 import './card.css';
 
 function Card ({ driver }) {
   const { id, name, image, teams } = driver;
-  const team = teams.split(', ');
 
   return (
     <div className="card-container">
-      <h1>{name.surname}</h1>
       <div className='card-img-container'>
         <NavLink to={`/detail/${id}`}>
-          <img className='card-img' src={image.url} alt={name.surname} />
+          <img className='card-img' src={image.url.length ? image.url : defimg} alt={name.surname} />
         </NavLink>
       </div>
-      <p>{team.slice(0, 2).join(' & ')}</p>
+      <h3 className='card-name'>{name.surname}</h3>
+      <p className='card-teams'>{teams ? teams.split(',').slice(0, 2).join(' | ') : 'no teams'}</p>
     </div>
   );
 }

@@ -11,7 +11,8 @@ export const useDriversActions = () => {
   };
   //* create drivers
   const createDriver = async (data) => {
-    const response = await axios.post('/driver', data);
+    console.log('data: ', data);
+    const response = await axios.post('/driver/', data);
     if (!response) return alert('not');
     else dispatch(createDrivers(response));
   };

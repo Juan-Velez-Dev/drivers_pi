@@ -1,0 +1,27 @@
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.pagination-container button {
+  padding: 4px;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.isCurrent {
+  background-color: rgba(114, 13, 13, 0.8);
+}
+.is-disable {
+  pointer-events: none;
+  background-size: contain;
+  background-color: rgb(112, 112, 112);
+}
+
+.pagination-buttons {
+}
+
+.pagination-buttons button {
+  padding-left: 10px;
+  padding-right: 10px;
+}

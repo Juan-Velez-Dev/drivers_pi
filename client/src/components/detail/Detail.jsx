@@ -2,15 +2,31 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './detail.css';
+import Loading from '../loading/Loading';
 
 function Detail () {
   const { id } = useParams();
-  const [driver, setDriver] = useState();
+  const [driver, setDriver] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     axios(`/driver/${Number(id)}`)
-      .then(data => setDriver(data.data))
-      .catch(error => alert(error.message));
-  }, []);
+      .then((response) => {
+        setDriver(response.data);
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
+      })
+      .catch((error) => {
+        setLoading(false);
+        alert(error.message);
+      });
+  }, [id]);
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <div className='detail-container'>
       <div className='detail-content'>

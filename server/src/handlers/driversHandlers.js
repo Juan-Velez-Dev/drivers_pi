@@ -2,14 +2,17 @@ const createDrivers = require('../controllers/drivers/createDrivers')
 const getDrivers = require('../controllers/drivers/getDrivers');
 const getDriversById = require('../controllers/drivers/getDriverById')
 const getDriverByName = require('../controllers/drivers/getDriverByName')
+const getDriverDB = require('../controllers/drivers/getDriversDB')
 
 //* GET ALL
 
 const getDriversHanlder = async (req, res) => {
   try {
     const response = await getDrivers();
-    if (response) return res.status(200).json(response);
-    if (!response) throw new Error('Drivers Not Found!');
+    const dbDriver = await getDriverDB()
+    const allDrivers = [...response, ...dbDriver]
+    if (allDrivers) return res.status(200).json(allDrivers);
+    if (!dbDriver) throw new Error('Drivers Not Found!');
   } catch (error) {
     return res.status(500).json(error.message);
   };

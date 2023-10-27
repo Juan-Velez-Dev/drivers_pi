@@ -11,7 +11,6 @@ export const useDriversActions = () => {
   };
   //* create drivers
   const createDriver = async (data) => {
-    console.log('data: ', data);
     const response = await axios.post('/driver/', data);
     if (!response) return alert('not');
     else dispatch(createDrivers(response));
@@ -46,6 +45,7 @@ export const useDriversActions = () => {
   };
   //* rest all filters
   const resetFilters = async () => {
+    dispatch(onSpecificPage(1));
     dispatch(removeFilters());
   };
 

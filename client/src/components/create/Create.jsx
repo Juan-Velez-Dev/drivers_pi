@@ -20,7 +20,7 @@ function Create () {
     description: '',
     image: '',
     nationality: '',
-    birthdate: '',
+    dob: '',
     teams: []
   });
   const handleOnChange = (event) => {
@@ -66,9 +66,11 @@ function Create () {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    createDriver(driverData);
-    alert('Created completed');
-    navigate('/home');
+    if (!Object.keys(errors).length) {
+      createDriver(driverData);
+      alert('Created completed');
+      navigate('/home');
+    } else alert('errors');
   };
 
   return (
@@ -108,14 +110,14 @@ function Create () {
         />
         <p className='error-message'>{messageErrors && errors.image}</p>
 
-        <label htmlFor="birthdate">Birthdate</label>
+        <label htmlFor="dob">Birthdate</label>
         <input
           type='date'
-          name='birthdate'
+          name='dob'
           onChange={handleOnChange}
           placeholder='Enter birthday here'
         />
-        <p className='error-message'>{messageErrors && errors.birthdate}</p>
+        <p className='error-message'>{messageErrors && errors.dob}</p>
 
         <label htmlFor="teams">Teams</label>
         <select name="teams" id="" onChange={handleOnChange}>

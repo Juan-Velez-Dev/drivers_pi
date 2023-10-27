@@ -22,6 +22,7 @@ export const driversSlice = createSlice({
     createDrivers: (state, action) => {
       const { data } = action.payload;
       state.driversCreated = [...state.driversCreated, data];
+      state.filterDrivers = [...state.filterDrivers, data];
     },
 
     //* --------- FILTERS ---------- *//
@@ -29,7 +30,7 @@ export const driversSlice = createSlice({
     //* get drivers by name
     filterByName: (state, action) => {
       const filter = state.allDrivers
-        .filter(driver => driver.name.surname.toLowerCase()
+        .filter(driver => driver.surname.toLowerCase()
           .includes(action.payload.toLowerCase()));
       if (!filter.length) alert('drivers not found');
       else state.filterDrivers = filter;
@@ -45,7 +46,7 @@ export const driversSlice = createSlice({
     //* get drivers by team
     filterByTeam: (state, action) => {
       const filter = state.filterDrivers.filter(driver => driver.hasOwnProperty('teams')); // eslint-disable-line
-      const response = filter.filter(driver => driver.teams.split(', ').includes(action.payload));
+      const response = filter.filter(driver => driver.teams.includes(action.payload));
       if (!response.length) alert('driver not found');
       else state.filterDriverTeams = response;
     },

@@ -42,7 +42,7 @@ describe("POST /driver", () => {
       description: "soy yo",
       image: "url.image",
       nationality: "colombiano",
-      birthdate: "1996-11-11",
+      dob: "1996-11-11",
       teams: ["McLaren"]
     }
     const response = await request(server).post("/driver").send(newDriver)

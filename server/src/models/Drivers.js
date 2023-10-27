@@ -42,7 +42,6 @@ module.exports = (sequelize) => {
         isUrl: true,
         notEmpty: true,
       },
-      unique: true,
     },
     nationality: {
       type: DataTypes.STRING,
@@ -52,7 +51,7 @@ module.exports = (sequelize) => {
         notEmpty: true,
       }
     },
-    birthdate: {
+    dob: {
       type: DataTypes.DATEONLY,
       allowNull: false,
       validate: {

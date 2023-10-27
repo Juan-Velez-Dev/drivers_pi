@@ -1,16 +1,21 @@
 import { useDriversActions } from '../../hooks/useDriversActions';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { onSpecificPage } from '../../redux/driversSlice';
+
 import './filter.css';
 
 function Filter () {
+  const dispatch = useDispatch();
   const { getByOrder, getByTeams, resetFilters } = useDriversActions();
   const { teams } = useSelector(state => state.teams);
 
   const handleOrder = (event) => {
     getByOrder(event.target.value);
+    dispatch(onSpecificPage(1));
   };
   const handleFilter = (event) => {
     getByTeams(event.target.value);
+    dispatch(onSpecificPage(1));
   };
   const handleReset = () => {
     resetFilters();

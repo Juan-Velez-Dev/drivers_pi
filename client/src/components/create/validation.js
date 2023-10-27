@@ -1,4 +1,4 @@
-const urlRegex = /^[A-Za-z0-9-]+\.[A-z]{2,}(\/\S*)?$/;
+const urlRegex = /\.(jpg|jpeg|png|gif|bmp|svg|webp|tiff)$/i;
 const textRegex = /^[A-Za-z ]*$/;
 
 const Validation = (form) => {
@@ -8,7 +8,14 @@ const Validation = (form) => {
   if (!textRegex.test(form.surname)) errors.surname = 'Please enter a valid surname❗';
   if (!textRegex.test(form.forename)) errors.forename = 'Please enter a valid forename❗';
   if (!Object.keys(form.nationality).length) errors.nationality = 'Please select a valid nationality❗';
-  if (!Object.keys(form.birthdate).length) errors.birthdate = 'Please enter a valid birthdate❗';
+
+  if (form.dob) {
+    const result = form.dob.split('-');
+    if (result[0] > 2010) errors.dob = 'Your Young';
+  }
+  console.log();
+
+  if (!Object.keys(form.dob).length) errors.dob = 'Please enter a valid birthdate❗';
   if (!Object.keys(form.description).length) errors.description = 'Please enter a valid description❗';
   return errors;
 };

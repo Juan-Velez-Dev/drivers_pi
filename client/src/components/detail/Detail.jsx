@@ -37,7 +37,7 @@ function Detail () {
           <p className='detail-forename'><span>Forename:</span> {driver[0]?.forename}</p>
           <p className='detail-nationality'><span>Nationality:</span> {driver[0]?.nationality}</p>
           <p className='detail-dob'><span>Birthday:</span> {driver[0]?.dob}</p>
-          <p className='detail-teams'><span>Teams:</span> {driver[0]?.teams[0]}</p>
+          <p className='detail-teams'><span>Teams:</span> {driver[0]?.teams.join(' - ')}</p>
         </div>
       </div>
       <p className='detail-description'>{driver[0]?.description}</p>

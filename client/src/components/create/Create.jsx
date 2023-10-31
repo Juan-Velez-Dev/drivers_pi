@@ -1,6 +1,6 @@
 import { useDriversActions } from '../../hooks/useDriversActions';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Validation from './validation';
 import './create.css';
@@ -23,6 +23,11 @@ function Create () {
     dob: '',
     teams: []
   });
+
+  useEffect(() => {
+
+  }, []);
+
   const handleOnChange = (event) => {
     const { name, value } = event.target;
 

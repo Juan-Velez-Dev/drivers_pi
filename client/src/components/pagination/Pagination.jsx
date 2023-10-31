@@ -19,14 +19,14 @@ export const Pagination = ({ data }) => {
     <div className='pagination-container'>
       <button disabled={buttonDisabel} className={`btn ${currentPage === 1 ? 'is-disable' : ''}`} onClick={prevHandler}>Prev</button>
       <div className='pagination-buttons'>
-        {currentPage !== 1 && <button onClick={() => specificPage(1)}>1...</button> }
+        {currentPage !== 1 && <button onClick={() => specificPage(1)}>first</button> }
         {pageNumbers?.slice(currentPage - 1, currentPage + 5).map(noPage => (
           <button
             className={noPage === currentPage ? 'isCurrent' : ''}
             key={noPage}
             onClick={() => specificPage(noPage)}>{noPage}</button>
         ))}
-        {currentPage !== 57 && <button onClick={() => specificPage(57)}>...57</button> }
+        {currentPage !== pageNumbers.length && <button onClick={() => specificPage(pageNumbers.length)}>Last</button> }
       </div>
       <button className={`btn-next ${currentPage >= pageNumbers.length ? 'is-disable' : ''}`} onClick={nextHandler}>Next</button>
     </div>

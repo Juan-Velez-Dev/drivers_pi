@@ -8,15 +8,17 @@ import Detail from './components/detail/Detail';
 import Home from './components/home/Home';
 import Nav from './components/nav/Nav';
 import './App.css';
+import { useSelector } from 'react-redux';
 
 function App () {
   const location = useLocation();
+  const { driversCreated } = useSelector(state => state.drivers);
   const { getTeams } = useTeamsActions();
   const { getDrivers } = useDriversActions();
   useEffect(() => {
     getDrivers();
     getTeams();
-  }, []);
+  }, [driversCreated]);
 
   return (
     <div className='app-container'>

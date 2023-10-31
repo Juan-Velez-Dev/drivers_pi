@@ -1,9 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import defimg from '../../assets/defimg.jpg';
 import './card.css';
+import { useEffect } from 'react';
 
 function Card (driver) {
   const { id, surname, image, teams } = driver.driver;
+
+  useEffect(() => {}, []);
 
   return (
     <div className="card-container">
@@ -13,7 +16,7 @@ function Card (driver) {
         </NavLink>
       </div>
       <h3 className='card-name'>{surname}</h3>
-      <p className='card-teams'>{teams.slice(0, 2).join(' | ')}</p>
+      <p className='card-teams'>{teams.length > 1 ? teams.slice(0, 2).join(' | ') : teams}</p>
     </div>
   );
 }

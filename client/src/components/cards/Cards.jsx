@@ -14,6 +14,8 @@ function Cards () {
   const lastIndex = currentPage * driversPerPage;
   const firstIndex = lastIndex - driversPerPage;
 
+  useEffect(() => {}, []);
+
   useEffect(() => {
     if (filterDriverTeams.length) setData(filterDriverTeams);
     else if (filterDrivers.length) setData(filterDrivers);

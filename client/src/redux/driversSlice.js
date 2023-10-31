@@ -23,6 +23,7 @@ export const driversSlice = createSlice({
       const { data } = action.payload;
       state.driversCreated = [...state.driversCreated, data];
       state.filterDrivers = [...state.filterDrivers, data];
+      state.allDrivers = [...state.allDrivers, data];
     },
 
     //* --------- FILTERS ---------- *//
